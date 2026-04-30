@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-// Replace this with your machine's local IP when testing on a device
-// e.g. http://192.168.x.x:5000/api
-// Or use your deployed Render/Railway URL in production
-// USE 'localhost' if testing on Web browser on the same machine
-// USE your machine's IP (e.g. 192.168.x.x) if testing on a physical mobile device
-const SERVER_URL = 'http://localhost:5000'; 
+// The production Render backend URL
+const SERVER_URL = 'https://sports-complex-booking-mobile-app.onrender.com'; 
 export const BASE_URL = `${SERVER_URL}/api`;
 
 const api = axios.create({
