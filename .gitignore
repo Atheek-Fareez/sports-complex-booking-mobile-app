@@ -1,0 +1,26 @@
+# Root ignore file
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignore env files anywhere
+**/.env
+**/.env.local
+
+# Project specific ignores
+Project/backend/node_modules/
+Project/frontend/node_modules/
+Project/frontend/.expo/
+Project/backend/uploads/
+
+# IDE / Editor files
+.idea/
+.vscode/
+
+# Local test/documentation files
+imageuploadskills.md
+paymentsskills.md
+refundskills.md
+test_import.js
+walkthrough_Phase_01
