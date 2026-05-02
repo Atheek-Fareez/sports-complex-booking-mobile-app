@@ -1,11 +1,11 @@
-# 🏟️ Sports Complex Booking Mobile App
+#  Sports Complex Booking Mobile App
 
 **Y2S2 · Group: WE.AI.12**  
 A full-stack mobile application for managing room, indoor court, and swimming pool bookings at a sports complex facility.
 
 ---
 
-## 🚀 Live Backend
+##  Live Backend
 
 | Service | URL |
 |---|---|
@@ -14,7 +14,7 @@ A full-stack mobile application for managing room, indoor court, and swimming po
 
 ---
 
-## 👥 Team
+##  Team
 
 | Student ID | Name | Module |
 |---|---|---|
@@ -27,7 +27,7 @@ A full-stack mobile application for managing room, indoor court, and swimming po
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 sports-complex-booking-mobile-app/
@@ -112,7 +112,7 @@ sports-complex-booking-mobile-app/
 
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -127,7 +127,7 @@ sports-complex-booking-mobile-app/
 
 ---
 
-## 🛠️ Prerequisites
+##  Prerequisites
 
 Install these before running the project:
 
@@ -139,7 +139,7 @@ Install these before running the project:
 
 ---
 
-## 📦 Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -165,7 +165,7 @@ MONGO_URI=mongodb+srv://<your-user>:<your-password>@cluster0.xxxxx.mongodb.net/?
 JWT_SECRET=your_secret_key_here
 ```
 
-> ⚠️ Replace the MongoDB URI with your own MongoDB Atlas connection string.
+>  Replace the MongoDB URI with your own MongoDB Atlas connection string.
 
 Start the backend server:
 
@@ -213,7 +213,7 @@ Then:
 
 ---
 
-## 🌐 Running Against the Live Backend (Render)
+##  Running Against the Live Backend (Render)
 
 The backend is already deployed at:
 
@@ -227,11 +227,11 @@ To connect the mobile app to the live backend, set `services/api.js`:
 const BASE_URL = 'https://sports-complex-booking-mobile-app.onrender.com';
 ```
 
-> ℹ️ **Note:** Render free-tier servers spin down after inactivity. The first request may take 30–60 seconds to respond. Subsequent requests will be fast.
+>  **Note:** Render free-tier servers spin down after inactivity. The first request may take 30–60 seconds to respond. Subsequent requests will be fast.
 
 ---
 
-## 🔑 API Endpoints Reference
+##  API Endpoints Reference
 
 ### Auth
 | Method | Endpoint | Description |
@@ -282,7 +282,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
 | Variable | Description |
 |---|---|
@@ -292,7 +292,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 👤 User Roles
+##  Roles
 
 | Role | Access |
 |---|---|
@@ -301,7 +301,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 🧪 Testing APIs with Postman
+##  Testing APIs with Postman
 
 1. Open Postman
 2. Import or manually create requests using the endpoints above
@@ -310,7 +310,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 📋 Booking Status Flow
+##  Booking Status Flow
 
 ```
 User Submits Payment
@@ -322,12 +322,11 @@ Admin Reviews in Dashboard
     Accept          Reject
         ↓               ↓
   Confirmed          Rejected
-  (SMS Sent)
-```
+
 
 ---
 
-## 🔄 Refund Policy
+## Refund Policy
 
 - **Pool / Futsal:** Refund ticket must be submitted at least **12 hours** before booking time
 - **Room:** Refund ticket must be submitted at least **48 hours** before check-in
@@ -335,6 +334,6 @@ Admin Reviews in Dashboard
 
 ---
 
-## 📝 License
+## License
 
 This project is developed as part of an academic module (Y2S2) and is for educational purposes.
