@@ -23,7 +23,7 @@ A full-stack mobile application for managing room, indoor court, and swimming po
 | IT24103891 | Perera J.M.C.S | Indoor Court & Swimming Pool Management |
 | IT24100647 | Jayasekara A.J.M.P.N | Booking Management |
 | IT24104048 | Thennakoon T.M.P.N | Payment Management |
-| IT24104252 | Thennakoon T.M.P.N | Upload, Deployment & Ticket Management |
+| IT24104252 | Peiris Y.N  | Upload, Deployment & Ticket Management |
 
 ---
 
@@ -228,57 +228,6 @@ const BASE_URL = 'https://sports-complex-booking-mobile-app.onrender.com';
 ```
 
 >  **Note:** Render free-tier servers spin down after inactivity. The first request may take 30–60 seconds to respond. Subsequent requests will be fast.
-
----
-
-##  API Endpoints Reference
-
-### Auth
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/auth/register` | Register a new user |
-| POST | `/api/auth/login` | Login and receive JWT token |
-| GET | `/api/auth/profile` | Get logged-in user profile (protected) |
-
-### Rooms
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/rooms` | List all rooms |
-| GET | `/api/rooms/:id` | Get single room |
-| POST | `/api/rooms` | Create room (admin) |
-| PUT | `/api/rooms/:id` | Update room (admin) |
-| DELETE | `/api/rooms/:id` | Delete room (admin) |
-
-### Courts & Pools
-Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
-
-### Bookings
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/bookings` | Create booking |
-| GET | `/api/bookings` | Get all bookings (admin) |
-| GET | `/api/bookings/user/:userId` | Get user's bookings |
-| PUT | `/api/bookings/:id` | Update booking status |
-| DELETE | `/api/bookings/:id` | Delete booking |
-
-### Payments
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/payments` | Submit payment (card format validation) |
-| GET | `/api/payments/myhistory` | Get user payment history |
-| PUT | `/api/payments/:id/admin-confirm` | Admin approve/reject payment |
-
-### Tickets & Refunds
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/tickets` | Submit support ticket |
-| GET | `/api/tickets` | List all tickets (admin) |
-| POST | `/api/admin/tickets/:id/process-refund` | Process refund (admin) |
-
-### Upload
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/upload` | Upload image for a facility |
 
 ---
 
