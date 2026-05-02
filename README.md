@@ -1,11 +1,11 @@
-# 🏟️ Sports Complex Booking Mobile App
+#  Sports Complex Booking Mobile App
 
 **Y2S2 · Group: WE.AI.12**  
 A full-stack mobile application for managing room, indoor court, and swimming pool bookings at a sports complex facility.
 
 ---
 
-## 🚀 Live Backend
+## Live Backend
 
 | Service | URL |
 |---|---|
@@ -14,7 +14,7 @@ A full-stack mobile application for managing room, indoor court, and swimming po
 
 ---
 
-## 👥 Team
+##  Team
 
 | Student ID | Name | Module |
 |---|---|---|
@@ -112,7 +112,7 @@ sports-complex-booking-mobile-app/
 
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -127,7 +127,7 @@ sports-complex-booking-mobile-app/
 
 ---
 
-## 🛠️ Prerequisites
+##  Prerequisites
 
 Install these before running the project:
 
@@ -139,7 +139,7 @@ Install these before running the project:
 
 ---
 
-## 📦 Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -165,7 +165,7 @@ MONGO_URI=mongodb+srv://<your-user>:<your-password>@cluster0.xxxxx.mongodb.net/?
 JWT_SECRET=your_secret_key_here
 ```
 
-> ⚠️ Replace the MongoDB URI with your own MongoDB Atlas connection string.
+>  Replace the MongoDB URI with your own MongoDB Atlas connection string.
 
 Start the backend server:
 
@@ -213,7 +213,7 @@ Then:
 
 ---
 
-## 🌐 Running Against the Live Backend (Render)
+##  Running Against the Live Backend (Render)
 
 The backend is already deployed at:
 
@@ -227,72 +227,11 @@ To connect the mobile app to the live backend, set `services/api.js`:
 const BASE_URL = 'https://sports-complex-booking-mobile-app.onrender.com';
 ```
 
-> ℹ️ **Note:** Render free-tier servers spin down after inactivity. The first request may take 30–60 seconds to respond. Subsequent requests will be fast.
+> **Note:** Render free-tier servers spin down after inactivity. The first request may take 30–60 seconds to respond. Subsequent requests will be fast.
 
 ---
 
-## 🔑 API Endpoints Reference
-
-### Auth
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/auth/register` | Register a new user |
-| POST | `/api/auth/login` | Login and receive JWT token |
-| GET | `/api/auth/profile` | Get logged-in user profile (protected) |
-
-### Rooms
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/rooms` | List all rooms |
-| GET | `/api/rooms/:id` | Get single room |
-| POST | `/api/rooms` | Create room (admin) |
-| PUT | `/api/rooms/:id` | Update room (admin) |
-| DELETE | `/api/rooms/:id` | Delete room (admin) |
-
-### Courts & Pools
-Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
-
-### Bookings
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/bookings` | Create booking |
-| GET | `/api/bookings` | Get all bookings (admin) |
-| GET | `/api/bookings/user/:userId` | Get user's bookings |
-| PUT | `/api/bookings/:id` | Update booking status |
-| DELETE | `/api/bookings/:id` | Delete booking |
-
-### Payments
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/payments` | Submit payment (card format validation) |
-| GET | `/api/payments/myhistory` | Get user payment history |
-| PUT | `/api/payments/:id/admin-confirm` | Admin approve/reject payment |
-
-### Tickets & Refunds
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/tickets` | Submit support ticket |
-| GET | `/api/tickets` | List all tickets (admin) |
-| POST | `/api/admin/tickets/:id/process-refund` | Process refund (admin) |
-
-### Upload
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/upload` | Upload image for a facility |
-
----
-
-## 🔐 Environment Variables
-
-| Variable | Description |
-|---|---|
-| `PORT` | Server port (default: 5000) |
-| `MONGO_URI` | MongoDB Atlas connection string |
-| `JWT_SECRET` | Secret key for JWT token signing |
-
----
-
-## 👤 User Roles
+##  Roles
 
 | Role | Access |
 |---|---|
@@ -301,7 +240,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 🧪 Testing APIs with Postman
+##  Testing APIs with Postman
 
 1. Open Postman
 2. Import or manually create requests using the endpoints above
@@ -310,7 +249,7 @@ Same CRUD pattern as Rooms under `/api/courts` and `/api/pools`.
 
 ---
 
-## 📋 Booking Status Flow
+##  Booking Status Flow
 
 ```
 User Submits Payment
@@ -322,12 +261,12 @@ Admin Reviews in Dashboard
     Accept          Reject
         ↓               ↓
   Confirmed          Rejected
-  (SMS Sent)
+  
 ```
 
 ---
 
-## 🔄 Refund Policy
+##  Refund Policy
 
 - **Pool / Futsal:** Refund ticket must be submitted at least **12 hours** before booking time
 - **Room:** Refund ticket must be submitted at least **48 hours** before check-in
@@ -335,6 +274,6 @@ Admin Reviews in Dashboard
 
 ---
 
-## 📝 License
+##  License
 
 This project is developed as part of an academic module (Y2S2) and is for educational purposes.
