@@ -14,7 +14,7 @@ exports.initiatePayment = async (req, res) => {
     }
 
     if (!termsAccepted) {
-      return res.status(400).json({ message: 'Terms and conditions must be accepted' });
+      return res.status(400).json({ message: 'Terms and conditions must be accepted before booking' });
     }
 
     const booking = await Booking.findById(bookingId);
