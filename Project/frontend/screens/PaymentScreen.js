@@ -93,7 +93,7 @@ const PaymentScreen = ({ route, navigation }) => {
   const [expiry, setExpiry] = useState('');
   const [cvv, setCvv] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
-  
+
   // Room specific
   const isRoom = facilityType === 'room';
   const [paymentMode, setPaymentMode] = useState('full'); // 'full' or 'advance'
@@ -198,7 +198,7 @@ const PaymentScreen = ({ route, navigation }) => {
         paymentMode: isRoom ? paymentMode : 'full',
         maskedCardNumber,
         bookingRef: confRes.data.data?.bookingId?.toString().slice(-6).toUpperCase() ||
-                    bookingId.slice(-6).toUpperCase(),
+          bookingId.slice(-6).toUpperCase(),
       });
 
     } catch (error) {
@@ -245,7 +245,7 @@ const PaymentScreen = ({ route, navigation }) => {
       {/* 2. Price Summary */}
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>Price summary</Text>
-        
+
         {isRoom ? (
           <>
             <View style={styles.priceRow}>
@@ -259,8 +259,8 @@ const PaymentScreen = ({ route, navigation }) => {
 
             <View style={styles.paymentSelector}>
               <Text style={styles.selectorLabel}>Select Payment Type *</Text>
-              
-              <TouchableOpacity 
+
+              <TouchableOpacity
                 style={[styles.radioItem, paymentMode === 'full' && styles.radioSelected]}
                 onPress={() => setPaymentMode('full')}
               >
@@ -271,7 +271,7 @@ const PaymentScreen = ({ route, navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={[styles.radioItem, paymentMode === 'advance' && styles.radioSelected]}
                 onPress={() => setPaymentMode('advance')}
               >
@@ -317,6 +317,9 @@ const PaymentScreen = ({ route, navigation }) => {
       {/* 3. Card Information */}
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>Payment details</Text>
+        <Text style={styles.policyBullet}>
+          Note: This system validates card details for format checking only. No real payment will be charged.
+        </Text>
 
         {/* Cardholder Name */}
         <View style={[styles.inputGroup, errors.cardName && styles.errorBorder]}>
