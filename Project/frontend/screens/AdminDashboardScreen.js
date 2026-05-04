@@ -197,197 +197,197 @@ const AdminDashboardScreen = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[C.navy]} />}
       >
-      {/* ── HEADER ─────────────────────────────────────────────────── */}
-      <View style={s.header}>
-        <View>
-          <Text style={s.headerSub}>Admin Panel</Text>
-          <Text style={s.headerTitle}>Business Dashboard</Text>
-        </View>
-        <View style={s.headerRight}>
-          <TouchableOpacity style={s.headerBtn} onPress={() => navigation.navigate('AdminBookingList')}>
-            <Text style={s.headerBtnText}>📋 Bookings</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[s.headerBtn, { backgroundColor: 'rgba(255,255,255,0.15)', marginTop: 6 }]} onPress={() => navigation.navigate('AdminTicketList')}>
-            <Text style={s.headerBtnText}>🎫 Tickets</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* ── REVENUE HERO ───────────────────────────────────────────── */}
-      <View style={s.revenueHero}>
-        <View style={s.revenueHeroLeft}>
-          <Text style={s.revenueLabel}>Total Confirmed Revenue</Text>
-          <Text style={s.revenueValue}>{fmtCurrency(revenue.totalRevenue)}</Text>
-          <Text style={s.revenueMonth}>This month: {fmtCurrency(revenue.thisMonthRevenue)}</Text>
-        </View>
-        <View style={s.growthBox}>
-          <Text style={[s.growthNum, { color: growthPositive ? C.green : C.red }]}>
-            {growthPositive ? '▲' : '▼'} {Math.abs(growth)}%
-          </Text>
-          <Text style={s.growthLabel}>vs last month</Text>
-        </View>
-      </View>
-
-      {/* ── OVERVIEW STATS GRID ─────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="📊 Bookings Overview" sub="All time & this month" />
-        <View style={s.statGrid}>
-          <StatCard icon="📦" label="Total Bookings" value={overview.totalBookings} color={C.navy} />
-          <StatCard icon="📅" label="This Month" value={overview.thisMonthBookings} color={C.navyLight}
-            sub={`Last month: ${overview.lastMonthBookings}`} />
-          <StatCard icon="✅" label="Confirmed" value={overview.confirmedBookings} color={C.green} />
-          <StatCard icon="⏳" label="Pending Verify" value={overview.pendingVerifications} color={C.orange}
-            onPress={() => navigation.navigate('AdminBookingList')} />
-          <StatCard icon="❌" label="Cancelled" value={overview.cancelledBookings} color={C.red} />
-          <StatCard icon="👥" label="Total Users" value={users.totalUsers} color={C.purple} />
-        </View>
-      </View>
-
-      {/* ── FACILITY BREAKDOWN ──────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="🏟️ Facility Performance" sub="Bookings per facility type" />
-
-        {/* Facility cards */}
-        <View style={s.facilityRow}>
-          <View style={[s.facilityCard, { borderColor: C.navy }]}>
-            <Text style={s.facilityIcon}>🏨</Text>
-            <Text style={s.facilityCount}>{facilities.roomBookings}</Text>
-            <Text style={s.facilityType}>Rooms</Text>
-            <Text style={s.facilityTotal}>{facilities.totalRooms} listed</Text>
+        {/* ── HEADER ─────────────────────────────────────────────────── */}
+        <View style={s.header}>
+          <View>
+            <Text style={s.headerSub}>Admin Panel</Text>
+            <Text style={s.headerTitle}>Business Dashboard</Text>
           </View>
-          <View style={[s.facilityCard, { borderColor: C.green }]}>
-            <Text style={s.facilityIcon}>⚽</Text>
-            <Text style={[s.facilityCount, { color: C.green }]}>{facilities.courtBookings}</Text>
-            <Text style={s.facilityType}>Courts</Text>
-            <Text style={s.facilityTotal}>{facilities.totalCourts} listed</Text>
-          </View>
-          <View style={[s.facilityCard, { borderColor: C.gold }]}>
-            <Text style={s.facilityIcon}>🏊</Text>
-            <Text style={[s.facilityCount, { color: '#b58900' }]}>{facilities.poolBookings}</Text>
-            <Text style={s.facilityType}>Pools</Text>
-            <Text style={s.facilityTotal}>{facilities.totalPools} listed</Text>
+          <View style={s.headerRight}>
+            <TouchableOpacity style={s.headerBtn} onPress={() => navigation.navigate('AdminBookingList')}>
+              <Text style={s.headerBtnText}>📋 Bookings</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[s.headerBtn, { backgroundColor: 'rgba(255,255,255,0.15)', marginTop: 6 }]} onPress={() => navigation.navigate('AdminTicketList')}>
+              <Text style={s.headerBtnText}>🎫 Tickets</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
-        {/* Most / Least booked */}
-        <View style={s.rankRow}>
-          <View style={[s.rankCard, { backgroundColor: '#e8f5e9' }]}>
-            <Text style={s.rankLabel}>🏆 Most Booked</Text>
-            <Text style={[s.rankType, { color: C.green }]}>{facilities.mostBooked?.type}</Text>
-            <Text style={s.rankCount}>{facilities.mostBooked?.count} bookings</Text>
+        {/* ── REVENUE HERO ───────────────────────────────────────────── */}
+        <View style={s.revenueHero}>
+          <View style={s.revenueHeroLeft}>
+            <Text style={s.revenueLabel}>Total Confirmed Revenue</Text>
+            <Text style={s.revenueValue}>{fmtCurrency(revenue.totalRevenue)}</Text>
+            <Text style={s.revenueMonth}>This month: {fmtCurrency(revenue.thisMonthRevenue)}</Text>
           </View>
-          <View style={[s.rankCard, { backgroundColor: '#fff3e0' }]}>
-            <Text style={s.rankLabel}>📉 Needs Attention</Text>
-            <Text style={[s.rankType, { color: C.orange }]}>{facilities.leastBooked?.type}</Text>
-            <Text style={s.rankCount}>{facilities.leastBooked?.count} bookings</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* ── MONTHLY CHART ───────────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="📈 Monthly Bookings" sub="Last 6 months — pull to refresh" />
-        <View style={s.card}>
-          {monthlyData && monthlyData.length > 0
-            ? <BarChart data={monthlyData} />
-            : <Text style={s.noData}>No monthly data available</Text>
-          }
-          <View style={s.chartLegend}>
-            <View style={s.legendItem}><View style={[s.legendDot, { backgroundColor: C.navy }]} /><Text style={s.legendText}>Previous months</Text></View>
-            <View style={s.legendItem}><View style={[s.legendDot, { backgroundColor: C.gold }]} /><Text style={s.legendText}>Current month</Text></View>
+          <View style={s.growthBox}>
+            <Text style={[s.growthNum, { color: growthPositive ? C.green : C.red }]}>
+              {growthPositive ? '▲' : '▼'} {Math.abs(growth)}%
+            </Text>
+            <Text style={s.growthLabel}>vs last month</Text>
           </View>
         </View>
-      </View>
 
-      {/* ── MONTHLY REVENUE TABLE ────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="💰 Monthly Revenue" sub="Confirmed bookings only" />
-        <View style={s.card}>
-          <View style={s.tableHeader}>
-            <Text style={[s.tableCell, s.tableHCell, { flex: 1.2 }]}>Month</Text>
-            <Text style={[s.tableCell, s.tableHCell]}>Bookings</Text>
-            <Text style={[s.tableCell, s.tableHCell, { flex: 2 }]}>Revenue</Text>
+        {/* ── OVERVIEW STATS GRID ─────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="📊 Bookings Overview" sub="All time & this month" />
+          <View style={s.statGrid}>
+            <StatCard icon="📦" label="Total Bookings" value={overview.totalBookings} color={C.navy} />
+            <StatCard icon="📅" label="This Month" value={overview.thisMonthBookings} color={C.navyLight}
+              sub={`Last month: ${overview.lastMonthBookings}`} />
+            <StatCard icon="✅" label="Confirmed" value={overview.confirmedBookings} color={C.green} />
+            <StatCard icon="⏳" label="Pending Payment Verification" value={overview.pendingVerifications} color={C.orange}
+              onPress={() => navigation.navigate('AdminBookingList')} />
+            <StatCard icon="❌" label="Cancelled" value={overview.cancelledBookings} color={C.red} />
+            <StatCard icon="👥" label="Total Users" value={users.totalUsers} color={C.purple} />
           </View>
-          {monthlyData?.map((row, i) => (
-            <View key={i} style={[s.tableRow, i % 2 === 0 && s.tableRowAlt]}>
-              <Text style={[s.tableCell, { flex: 1.2 }]}>{row.month} {row.year}</Text>
-              <Text style={s.tableCell}>{row.bookings}</Text>
-              <Text style={[s.tableCell, { flex: 2, color: C.navy, fontWeight: '700' }]}>{fmtCurrency(row.revenue)}</Text>
+        </View>
+
+        {/* ── FACILITY BREAKDOWN ──────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="🏟️ Facility Performance" sub="Bookings per facility type" />
+
+          {/* Facility cards */}
+          <View style={s.facilityRow}>
+            <View style={[s.facilityCard, { borderColor: C.navy }]}>
+              <Text style={s.facilityIcon}>🏨</Text>
+              <Text style={s.facilityCount}>{facilities.roomBookings}</Text>
+              <Text style={s.facilityType}>Rooms</Text>
+              <Text style={s.facilityTotal}>{facilities.totalRooms} listed</Text>
             </View>
-          ))}
-        </View>
-      </View>
+            <View style={[s.facilityCard, { borderColor: C.green }]}>
+              <Text style={s.facilityIcon}>⚽</Text>
+              <Text style={[s.facilityCount, { color: C.green }]}>{facilities.courtBookings}</Text>
+              <Text style={s.facilityType}>Courts</Text>
+              <Text style={s.facilityTotal}>{facilities.totalCourts} listed</Text>
+            </View>
+            <View style={[s.facilityCard, { borderColor: C.gold }]}>
+              <Text style={s.facilityIcon}>🏊</Text>
+              <Text style={[s.facilityCount, { color: '#b58900' }]}>{facilities.poolBookings}</Text>
+              <Text style={s.facilityType}>Pools</Text>
+              <Text style={s.facilityTotal}>{facilities.totalPools} listed</Text>
+            </View>
+          </View>
 
-      {/* ── SUPPORT TICKETS ─────────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="🎫 Support & Issues" />
-        <View style={s.statGrid}>
-          <StatCard icon="📬" label="Total Tickets" value={tickets.totalTickets} color={C.navy} />
-          <StatCard icon="🔴" label="Open Issues" value={tickets.openTickets} color={C.red}
-            sub="Needs attention" onPress={() => navigation.navigate('AdminTicketList')} />
-          <StatCard icon="💸" label="Refund Requests" value={tickets.refundTickets} color={C.orange} />
-          <StatCard icon="✅" label="Resolved" value={tickets.totalTickets - tickets.openTickets - tickets.refundTickets} color={C.green} />
+          {/* Most / Least booked */}
+          <View style={s.rankRow}>
+            <View style={[s.rankCard, { backgroundColor: '#e8f5e9' }]}>
+              <Text style={s.rankLabel}>🏆 Most Booked</Text>
+              <Text style={[s.rankType, { color: C.green }]}>{facilities.mostBooked?.type}</Text>
+              <Text style={s.rankCount}>{facilities.mostBooked?.count} bookings</Text>
+            </View>
+            <View style={[s.rankCard, { backgroundColor: '#fff3e0' }]}>
+              <Text style={s.rankLabel}>📉 Needs Attention</Text>
+              <Text style={[s.rankType, { color: C.orange }]}>{facilities.leastBooked?.type}</Text>
+              <Text style={s.rankCount}>{facilities.leastBooked?.count} bookings</Text>
+            </View>
+          </View>
         </View>
-      </View>
 
-      {/* ── RECENT BOOKINGS ─────────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="🕐 Recent Bookings" sub="Latest 5 bookings" />
-        <View style={s.card}>
-          {recentBookings?.length === 0
-            ? <Text style={s.noData}>No bookings yet</Text>
-            : recentBookings?.map((b, i) => (
-              <View key={b._id} style={[s.recentRow, i < recentBookings.length - 1 && s.recentBorder]}>
-                <View style={s.recentLeft}>
-                  <Text style={s.recentType}>{b.bookingType === 'room' ? '🏨' : b.bookingType === 'court' ? '⚽' : '🏊'} {b.bookingType.charAt(0).toUpperCase() + b.bookingType.slice(1)}</Text>
-                  <Text style={s.recentUser}>{b.userName}</Text>
-                  <Text style={s.recentDate}>{new Date(b.createdAt).toLocaleDateString()}</Text>
-                </View>
-                <View style={s.recentRight}>
-                  <Text style={s.recentAmount}>{fmtCurrency(b.totalAmount)}</Text>
-                  <StatusBadge status={b.status} />
-                </View>
+        {/* ── MONTHLY CHART ───────────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="📈 Monthly Bookings" sub="Last 6 months — pull to refresh" />
+          <View style={s.card}>
+            {monthlyData && monthlyData.length > 0
+              ? <BarChart data={monthlyData} />
+              : <Text style={s.noData}>No monthly data available</Text>
+            }
+            <View style={s.chartLegend}>
+              <View style={s.legendItem}><View style={[s.legendDot, { backgroundColor: C.navy }]} /><Text style={s.legendText}>Previous months</Text></View>
+              <View style={s.legendItem}><View style={[s.legendDot, { backgroundColor: C.gold }]} /><Text style={s.legendText}>Current month</Text></View>
+            </View>
+          </View>
+        </View>
+
+        {/* ── MONTHLY REVENUE TABLE ────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="💰 Monthly Revenue" sub="Confirmed bookings only" />
+          <View style={s.card}>
+            <View style={s.tableHeader}>
+              <Text style={[s.tableCell, s.tableHCell, { flex: 1.2 }]}>Month</Text>
+              <Text style={[s.tableCell, s.tableHCell]}>Bookings</Text>
+              <Text style={[s.tableCell, s.tableHCell, { flex: 2 }]}>Revenue</Text>
+            </View>
+            {monthlyData?.map((row, i) => (
+              <View key={i} style={[s.tableRow, i % 2 === 0 && s.tableRowAlt]}>
+                <Text style={[s.tableCell, { flex: 1.2 }]}>{row.month} {row.year}</Text>
+                <Text style={s.tableCell}>{row.bookings}</Text>
+                <Text style={[s.tableCell, { flex: 2, color: C.navy, fontWeight: '700' }]}>{fmtCurrency(row.revenue)}</Text>
               </View>
-            ))
-          }
-          <TouchableOpacity style={s.viewAllBtn} onPress={() => navigation.navigate('AdminBookingList')}>
-            <Text style={s.viewAllText}>View all bookings →</Text>
-          </TouchableOpacity>
+            ))}
+          </View>
         </View>
-      </View>
 
-      {/* ── QUICK INSIGHT TIPS ──────────────────────────────────────── */}
-      <View style={s.section}>
-        <SectionHead title="💡 Business Insights" />
-        <View style={s.insightCard}>
-          <Text style={s.insightItem}>
-            {growthPositive
-              ? `✅ Booking growth is up ${growth}% compared to last month. Great momentum!`
-              : `⚠️ Bookings dropped ${Math.abs(growth)}% vs last month. Consider running a promotion.`
-            }
-          </Text>
-          <Text style={s.insightItem}>
-            {facilities.leastBooked?.count < facilities.mostBooked?.count / 2
-              ? `📌 ${facilities.leastBooked?.type} are significantly underbooked. Consider promotions or pricing adjustments.`
-              : `📊 All facility types have balanced booking distribution.`
-            }
-          </Text>
-          {tickets.openTickets > 5 && (
-            <Text style={s.insightItem}>
-              🔴 You have {tickets.openTickets} open support tickets. Resolve them promptly to improve customer satisfaction.
-            </Text>
-          )}
-          {overview.pendingVerifications > 0 && (
-            <Text style={s.insightItem}>
-              ⏳ {overview.pendingVerifications} booking{overview.pendingVerifications > 1 ? 's are' : ' is'} awaiting payment verification.
-            </Text>
-          )}
+        {/* ── SUPPORT TICKETS ─────────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="🎫 Support & Issues" />
+          <View style={s.statGrid}>
+            <StatCard icon="📬" label="Total Tickets" value={tickets.totalTickets} color={C.navy} />
+            <StatCard icon="🔴" label="Open Issues" value={tickets.openTickets} color={C.red}
+              sub="Needs attention" onPress={() => navigation.navigate('AdminTicketList')} />
+            <StatCard icon="💸" label="Refund Requests" value={tickets.refundTickets} color={C.orange} />
+            <StatCard icon="✅" label="Resolved" value={tickets.totalTickets - tickets.openTickets - tickets.refundTickets} color={C.green} />
+          </View>
         </View>
-      </View>
 
-      <View style={{ height: 40 }} />
-    </ScrollView>
-    <ChatUI userToken={api.defaults.headers.common.Authorization?.split(' ')[1]} />
+        {/* ── RECENT BOOKINGS ─────────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="🕐 Recent Bookings" sub="Latest 5 bookings" />
+          <View style={s.card}>
+            {recentBookings?.length === 0
+              ? <Text style={s.noData}>No bookings yet</Text>
+              : recentBookings?.map((b, i) => (
+                <View key={b._id} style={[s.recentRow, i < recentBookings.length - 1 && s.recentBorder]}>
+                  <View style={s.recentLeft}>
+                    <Text style={s.recentType}>{b.bookingType === 'room' ? '🏨' : b.bookingType === 'court' ? '⚽' : '🏊'} {b.bookingType.charAt(0).toUpperCase() + b.bookingType.slice(1)}</Text>
+                    <Text style={s.recentUser}>{b.userName}</Text>
+                    <Text style={s.recentDate}>{new Date(b.createdAt).toLocaleDateString()}</Text>
+                  </View>
+                  <View style={s.recentRight}>
+                    <Text style={s.recentAmount}>{fmtCurrency(b.totalAmount)}</Text>
+                    <StatusBadge status={b.status} />
+                  </View>
+                </View>
+              ))
+            }
+            <TouchableOpacity style={s.viewAllBtn} onPress={() => navigation.navigate('AdminBookingList')}>
+              <Text style={s.viewAllText}>View all bookings →</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* ── QUICK INSIGHT TIPS ──────────────────────────────────────── */}
+        <View style={s.section}>
+          <SectionHead title="💡 Business Insights" />
+          <View style={s.insightCard}>
+            <Text style={s.insightItem}>
+              {growthPositive
+                ? `✅ Booking growth is up ${growth}% compared to last month. Great momentum!`
+                : `⚠️ Bookings dropped ${Math.abs(growth)}% vs last month. Consider running a promotion.`
+              }
+            </Text>
+            <Text style={s.insightItem}>
+              {facilities.leastBooked?.count < facilities.mostBooked?.count / 2
+                ? `📌 ${facilities.leastBooked?.type} are significantly underbooked. Consider promotions or pricing adjustments.`
+                : `📊 All facility types have balanced booking distribution.`
+              }
+            </Text>
+            {tickets.openTickets > 5 && (
+              <Text style={s.insightItem}>
+                🔴 You have {tickets.openTickets} open support tickets. Resolve them promptly to improve customer satisfaction.
+              </Text>
+            )}
+            {overview.pendingVerifications > 0 && (
+              <Text style={s.insightItem}>
+                ⏳ {overview.pendingVerifications} booking{overview.pendingVerifications > 1 ? 's are' : ' is'} awaiting payment verification.
+              </Text>
+            )}
+          </View>
+        </View>
+
+        <View style={{ height: 40 }} />
+      </ScrollView>
+      <ChatUI userToken={api.defaults.headers.common.Authorization?.split(' ')[1]} />
     </View>
   );
 };
