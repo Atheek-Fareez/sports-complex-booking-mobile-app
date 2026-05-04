@@ -19,6 +19,7 @@ exports.initiatePayment = async (req, res) => {
 
     const booking = await Booking.findById(bookingId);
     if (!booking) {
+      
       return res.status(404).json({ message: 'Booking not found' });
     }
 
